@@ -6,7 +6,7 @@ const initialState = {
   error: false,
 };
 
-const UserSlicer = createSlice({
+const userSlicer = createSlice({
   name: "user",
   initialState,
   reducers: {
@@ -38,6 +38,6 @@ export const {
   user_login_Success,
   user_login_Failed,
   user_logout,
-} = UserSlicer.actions;
+} = userSlicer.actions;
 
-export default UserSlicer.reducer;
+export default userSlicer.reducer;
