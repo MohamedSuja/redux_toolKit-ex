@@ -1,4 +1,4 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, ActivityIndicator } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../redux/slice/dataSlice";
@@ -7,7 +7,7 @@ import { fetchEmployees } from "../redux/slice/employeesSlice";
 
 const Screen2 = () => {
   const data = useSelector((state) => state.data);
-  const employees = useSelector((state) => state.employees);
+  const { employees, loading } = useSelector((state) => state.employees);
   const dispatch = useDispatch();
 
   const fetchEmp = async (userId) => {
@@ -25,7 +25,7 @@ const Screen2 = () => {
         }}
       />
       <Button
-        title="dispatch"
+        title="refresh"
         onPress={() => {
           fetchEmp();
         }}
@@ -36,6 +36,19 @@ const Screen2 = () => {
           console.log(employees);
         }}
       />
+      {loading !== "idle" ? (
+        <ActivityIndicator size="large" color="#00ff00" />
+      ) : (
+        employees !== undefined &&
+        employees.map((employee) => (
+          <View key={employee.id}>
+            <Text>Employee_id : {employee.id}</Text>
+            <Text>Employee Name : {employee.employee_name}</Text>
+            <Text>Employee Salary : {employee.employee_salary}</Text>
+            <Text>Employee Age : {employee.employee_age}</Text>
+          </View>
+        ))
+      )}
     </View>
   );
 };
