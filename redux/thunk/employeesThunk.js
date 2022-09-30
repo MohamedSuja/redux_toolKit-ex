@@ -1,4 +1,5 @@
 import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export async function getEmployees() {
   const url = "http://dummy.restapiexample.com/api/v1/employees";
@@ -11,3 +12,17 @@ export async function getEmployees() {
     throw err;
   }
 }
+
+export const fetchEmployees = createAsyncThunk(
+  "employees/fetch",
+  async (_, thunkAPI) => {
+    console.log("I am here", _.token);
+    async () => {
+      if (thunkAPI.getState().loading !== "pending") {
+        return;
+      }
+    };
+    const response = await getEmployees();
+    return response;
+  }
+);

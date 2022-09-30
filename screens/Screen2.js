@@ -2,8 +2,8 @@ import { View, Text, Button, ActivityIndicator } from "react-native";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getData } from "../redux/slice/dataSlice";
-import { getEmployees } from "../redux/slice/employeesAPI";
-import { fetchEmployees } from "../redux/slice/employeesSlice";
+
+import { fetchEmployees } from "../redux/thunk/employeesThunk";
 
 const Screen2 = () => {
   const data = useSelector((state) => state.data);
@@ -12,7 +12,7 @@ const Screen2 = () => {
 
   const fetchEmp = async (userId) => {
     try {
-      const emp = await dispatch(fetchEmployees());
+      const emp = await dispatch(fetchEmployees({ token: "asas", id: "asas" }));
       console.log(emp);
     } catch (err) {}
   };

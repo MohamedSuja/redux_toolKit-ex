@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getEmployees } from "./employeesAPI";
+import { fetchEmployees } from "../thunk/employeesThunk";
 
 // Requesting all employees, with loading state, and only one request at a time
 
@@ -8,19 +8,6 @@ const initialState = {
   loading: "idle",
   error: null,
 };
-
-export const fetchEmployees = createAsyncThunk(
-  "employees/fetch",
-  async (_, thunkAPI) => {
-    async () => {
-      if (thunkAPI.getState().loading !== "pending") {
-        return;
-      }
-    };
-    const response = await getEmployees();
-    return response;
-  }
-);
 
 const employeesSlice = createSlice({
   name: "employees",
