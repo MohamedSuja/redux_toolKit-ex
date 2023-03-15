@@ -6,6 +6,9 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -15,9 +18,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/0b971b0e-d67b-436a-afcf-a8c6b74fda43"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -26,7 +27,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.mohamedsuja.reduxtoolkittest"
+      "package": "com.mohamedsuja.reduxtoolkittest",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
